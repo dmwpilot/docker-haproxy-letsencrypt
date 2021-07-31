@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+
+  proxy:
+    image: haproxy-letsencrypt
+    #restart: always
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - CERTFQDN=tester.jerseyaeroclub.org
+      - CERTEMAIL=dmwpilot@yahoo.com
+    volumes:
+      - letsencrypt:/etc/letsencrypt/
+
+volumes:
+  letsencrypt:
